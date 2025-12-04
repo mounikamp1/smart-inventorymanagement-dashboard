@@ -1,0 +1,287 @@
+/* Dark Mode Activation - Force all dark utilities to apply */
+html.dark {
+  background: linear-gradient(
+    135deg,
+    #0f172a 0%,
+    #111827 50%,
+    #0f172a 100%
+  ) !important;
+  color: #f3f4f6 !important;
+}
+
+html.dark body {
+  background: linear-gradient(
+    135deg,
+    #0f172a 0%,
+    #111827 50%,
+    #0f172a 100%
+  ) !important;
+  color: #f3f4f6 !important;
+}
+
+/* Navbar Dark Mode */
+html.dark nav {
+  background-color: #111827 !important;
+  border-color: #1f2937 !important;
+}
+
+html.dark nav button {
+  color: #d1d5db !important;
+}
+
+html.dark nav button:hover {
+  background-color: #1f2937 !important;
+}
+
+html.dark nav button svg {
+  color: #d1d5db !important;
+}
+
+html.dark nav input {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+  color: #f3f4f6 !important;
+}
+
+html.dark nav input::placeholder {
+  color: #9ca3af !important;
+}
+
+/* Sidebar Dark Mode */
+html.dark aside {
+  background-color: #111827 !important;
+  border-color: #1f2937 !important;
+}
+
+html.dark aside svg {
+  color: #d1d5db !important;
+}
+
+html.dark aside span {
+  color: #d1d5db !important;
+}
+
+/* Main Content Dark Mode */
+html.dark main {
+  background: transparent !important;
+  color: #f3f4f6 !important;
+}
+
+/* Cards and Containers Dark Mode - Be specific */
+html.dark div[class*="shadow-lg"],
+html.dark div[class*="border"][class*="rounded"] {
+  background-color: #111827 !important;
+  border-color: #1f2937 !important;
+}
+
+/* Card Headers with Gradient Background */
+html.dark div[class*="from-blue-50"],
+html.dark div[class*="from-indigo-50"],
+html.dark div[class*="bg-linear"] {
+  background: linear-gradient(to right, #1f2937, #111827) !important;
+  color: #f3f4f6 !important;
+}
+
+/* Text Colors Dark Mode */
+html.dark .text-gray-600 {
+  color: #d1d5db !important;
+}
+
+html.dark .text-gray-700 {
+  color: #d1d5db !important;
+}
+
+html.dark .text-gray-800 {
+  color: #f3f4f6 !important;
+}
+
+html.dark .text-gray-900 {
+  color: #f3f4f6 !important;
+}
+
+html.dark .text-gray-400 {
+  color: #9ca3af !important;
+}
+
+html.dark .text-gray-500 {
+  color: #9ca3af !important;
+}
+
+/* Gradient Text in Dark Mode */
+html.dark .bg-clip-text.text-transparent {
+  background: linear-gradient(to right, #60a5fa, #a78bfa) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* Background Colors Dark Mode */
+html.dark .bg-white {
+  background-color: #111827 !important;
+  color: #f3f4f6 !important;
+}
+
+html.dark .bg-gray-50 {
+  background-color: #1f2937 !important;
+}
+
+html.dark .bg-gray-100 {
+  background-color: #1f2937 !important;
+}
+
+html.dark .bg-blue-50 {
+  background-color: #0c2340 !important;
+}
+
+html.dark .bg-indigo-50 {
+  background-color: #1e1b4b !important;
+}
+
+/* Border Colors Dark Mode */
+html.dark .border-gray-200 {
+  border-color: #374151 !important;
+}
+
+html.dark .border-gray-300 {
+  border-color: #4b5563 !important;
+}
+
+/* Input Dark Mode */
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+  color: #f3f4f6 !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #9ca3af !important;
+}
+
+/* Charts and Recharts Dark Mode */
+html.dark .recharts-cartesian-axis-tick text {
+  fill: #9ca3af !important;
+}
+
+html.dark .recharts-legend-wrapper text {
+  fill: #d1d5db !important;
+}
+
+html.dark .recharts-tooltip-wrapper {
+  outline: none !important;
+}
+
+html.dark .recharts-default-tooltip {
+  background-color: #111827 !important;
+  border: 1px solid #374151 !important;
+  border-radius: 0.375rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+}
+
+html.dark .recharts-tooltip {
+  background-color: #111827 !important;
+  border-color: #374151 !important;
+  padding: 8px 12px !important;
+}
+
+html.dark .recharts-tooltip-label {
+  color: #f3f4f6 !important;
+}
+
+html.dark .recharts-tooltip-item {
+  color: #f3f4f6 !important;
+}
+
+html.dark .recharts-tooltip-item-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+html.dark .recharts-tooltip-item-list li {
+  color: #f3f4f6 !important;
+  display: block !important;
+  padding: 2px 0 !important;
+}
+
+html.dark .recharts-default-tooltip .recharts-tooltip-label {
+  color: #d1d5db !important;
+  font-weight: 500 !important;
+  margin-bottom: 4px !important;
+}
+
+/* Ensure all chart text is visible */
+html.dark svg text {
+  fill: #9ca3af !important;
+}
+
+html.dark .recharts-surface {
+  background-color: transparent !important;
+}
+
+html.dark .recharts-cartesian-grid-horizontal line,
+html.dark .recharts-cartesian-grid-vertical line {
+  stroke: #374151 !important;
+}
+
+html.dark .recharts-curve {
+  stroke-opacity: 0.8 !important;
+}
+
+html.dark .recharts-bar {
+  opacity: 0.9 !important;
+}
+
+/* Status badges */
+html.dark .bg-green-100 {
+  background-color: #064e3b !important;
+  color: #86efac !important;
+}
+
+html.dark .bg-yellow-100 {
+  background-color: #663c00 !important;
+  color: #fde047 !important;
+}
+
+html.dark .bg-red-100 {
+  background-color: #7f1d1d !important;
+  color: #fca5a5 !important;
+}
+
+html.dark .bg-blue-100 {
+  background-color: #0c2340 !important;
+  color: #60a5fa !important;
+}
+
+/* Icons that should stay colored */
+html.dark .text-blue-600,
+html.dark .text-blue-500,
+html.dark .text-purple-600,
+html.dark .text-yellow-500,
+html.dark .text-red-500,
+html.dark .text-green-500 {
+  color: inherit !important;
+}
+
+/* Allow data to display properly */
+html.dark table,
+html.dark tbody,
+html.dark td,
+html.dark th {
+  background-color: transparent;
+  color: #f3f4f6;
+  border-color: #374151;
+}
+
+html.dark p,
+html.dark span,
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6 {
+  color: #f3f4f6;
+}

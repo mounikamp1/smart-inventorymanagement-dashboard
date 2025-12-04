@@ -1,0 +1,200 @@
+@import "tailwindcss";
+@import "./darkmode.css";
+
+/* ===========================
+   ROOT & BASIC STYLES
+   =========================== */
+
+:root {
+  color-scheme: light;
+}
+
+:root.dark {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: linear-gradient(135deg, #f9fafb 0%, #e0f2fe 50%, #f1f5f9 100%);
+  color: #111827;
+  font-size: 0.875rem;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+body.dark {
+  background: linear-gradient(135deg, #0f172a 0%, #111827 50%, #0f172a 100%);
+  color: #f3f4f6;
+}
+
+/* ===========================
+   SCROLLBAR STYLES
+   =========================== */
+
+/* Light mode scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Dark mode scrollbar */
+:root.dark::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+:root.dark::-webkit-scrollbar-thumb {
+  background: #4b5563;
+}
+
+:root.dark::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+body::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 5px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+body.dark::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+body.dark::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 5px;
+}
+
+body.dark::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Firefox scrollbar */
+body {
+  scrollbar-color: #d1d5db #f3f4f6;
+  scrollbar-width: thin;
+}
+
+body.dark {
+  scrollbar-color: #4b5563 #1f2937;
+}
+
+/* ===========================
+   DARK MODE OVERRIDES - CRITICAL
+   =========================== */
+
+html.dark {
+  background: linear-gradient(
+    135deg,
+    #0f172a 0%,
+    #111827 50%,
+    #0f172a 100%
+  ) !important;
+  color: #f3f4f6 !important;
+}
+
+html.dark body {
+  background: linear-gradient(
+    135deg,
+    #0f172a 0%,
+    #111827 50%,
+    #0f172a 100%
+  ) !important;
+  color: #f3f4f6 !important;
+}
+
+html.dark .bg-white {
+  background-color: #111827 !important;
+}
+
+html.dark .dark\:bg-gray-900 {
+  background-color: #111827 !important;
+}
+
+html.dark .dark\:bg-gray-950 {
+  background-color: #0f172a !important;
+}
+
+html.dark .dark\:text-gray-100 {
+  color: #f3f4f6 !important;
+}
+
+html.dark .dark\:border-gray-800 {
+  border-color: #1f2937 !important;
+}
+
+html.dark .dark\:border-gray-700 {
+  border-color: #374151 !important;
+}
+
+html.dark .text-gray-900 {
+  color: #f3f4f6 !important;
+}
+
+html.dark .bg-gray-50 {
+  background-color: #1f2937 !important;
+}
+
+html.dark .bg-gray-100 {
+  background-color: #1f2937 !important;
+}
+
+html.dark .border-gray-200 {
+  border-color: #374151 !important;
+}
+
+html.dark .border-gray-300 {
+  border-color: #4b5563 !important;
+}
+
+/* ===========================
+   UTILITY CLASSES
+   =========================== */
+
+.custom-grid-rows {
+  grid-template-rows: auto;
+}
+
+@media (min-width: 768px) {
+  .custom-grid-rows {
+    grid-template-rows: repeat(8, 20vh);
+  }
+}
+
+@media (min-width: 1280px) {
+  .custom-grid-rows {
+    grid-template-rows: repeat(8, 7.5vh);
+  }
+}
