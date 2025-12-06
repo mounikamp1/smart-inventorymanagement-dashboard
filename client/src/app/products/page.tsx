@@ -6,6 +6,7 @@ import { useState } from "react";
 import Header from "@/src/app/(components)/Header";
 import Rating from "@/src/app/(components)/Rating";
 import CreateProductModal from "./CreateProductModal";
+import Image from "next/image";
 
 type ProductFormData = {
   name: string;
@@ -129,9 +130,17 @@ const Products = () => {
                 key={product.productId}
                 className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover:border-blue-300 dark:hover:border-blue-700"
               >
-                {/* Product image placeholder */}
-                <div className="h-48 bg-linear-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center group-hover:from-blue-50 group-hover:to-indigo-50 dark:group-hover:from-gray-700 dark:group-hover:to-gray-600 transition-colors">
-                  <Package className="w-12 h-12 text-gray-400 dark:text-gray-500" />
+                {/* Product image */}
+                <div className="relative h-48 bg-linear-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center group-hover:from-blue-50 group-hover:to-indigo-50 dark:group-hover:from-gray-700 dark:group-hover:to-gray-600 transition-colors overflow-hidden">
+                  <Image
+                    src={`https://s3-smart-inventory-dashboard.s3.us-east-2.amazonaws.com/product${
+                      Math.floor(Math.random() * 3) + 1
+                    }.png`}
+                    alt={product.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
                 </div>
 
                 {/* Product info */}

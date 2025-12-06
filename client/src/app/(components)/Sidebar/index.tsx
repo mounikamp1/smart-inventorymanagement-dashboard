@@ -14,6 +14,7 @@ import { useAppDispatch, useAppSelector } from "../../redux";
 import { setIsSidebarCollapsed } from "@/src/state";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 interface SidebarLinkProps {
   href: string;
@@ -76,7 +77,13 @@ const Sidebar = () => {
         } border-b border-gray-200 dark:border-gray-800`}
       >
         <div className="w-10 h-10 bg-linear-to-br from-blue-500 via-blue-600 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-lg shadow-lg">
-          S
+          <Image
+            src="https://s3-smart-inventory-dashboard.s3.us-east-2.amazonaws.com/logo.png"
+            alt="StockWise Logo"
+            width={27}
+            height={27}
+            className="rounded W-8"
+          />
         </div>
         <h1
           className={`${

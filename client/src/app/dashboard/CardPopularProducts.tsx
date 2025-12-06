@@ -1,6 +1,7 @@
 import { useGetDashboardMetricsQuery } from "@/src/state/api";
 import { ShoppingBag, TrendingUp, AlertCircle } from "lucide-react";
 import React from "react";
+import Image from "next/image";
 import Rating from "../(components)/Rating";
 
 const CardPopularProducts = () => {
@@ -42,7 +43,7 @@ const CardPopularProducts = () => {
 
           {/* PRODUCTS LIST */}
           <div className="overflow-y-auto flex-1">
-            {dashboardMetrics.popularProducts.map((product, index) => (
+            {dashboardMetrics.popularProducts.map((product) => (
               <div
                 key={product.productId}
                 className="group px-6 py-5 border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors duration-200 last:border-b-0"
@@ -50,9 +51,17 @@ const CardPopularProducts = () => {
                 <div className="flex items-center justify-between gap-4">
                   {/* LEFT SIDE - PRODUCT INFO */}
                   <div className="flex items-center gap-4 flex-1 min-w-0">
-                    {/* ICON */}
-                    <div className="w-14 h-14 bg-linear-to-br from-blue-100 to-blue-50 dark:from-blue-900/30 dark:to-blue-800/20 rounded-xl flex items-center justify-center text-xl shrink-0 shadow-sm">
-                      📦
+                    {/* PRODUCT IMAGE */}
+                    <div className="w-14 h-14 bg-linear-to-br from-blue-100 to-blue-50 dark:from-blue-900/30 dark:to-blue-800/20 rounded-xl flex items-center justify-center text-xl shrink-0 shadow-sm overflow-hidden relative">
+                      <Image
+                        src={`https://s3-smart-inventory-dashboard.s3.us-east-2.amazonaws.com/product${
+                          Math.floor(Math.random() * 3) + 1
+                        }.png`}
+                        alt={product.name}
+                        width={56}
+                        height={56}
+                        className="object-cover w-full h-full rounded-xl"
+                      />
                     </div>
 
                     {/* PRODUCT DETAILS */}

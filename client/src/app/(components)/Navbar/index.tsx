@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "@/src/app/redux";
 import { setIsDarkMode, setIsSidebarCollapsed } from "@/src/state";
 import { Bell, Menu, Moon, Settings, Sun, Search } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
@@ -70,7 +71,13 @@ const Navbar = () => {
 
             <div className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 cursor-pointer">
               <div className="w-8 h-8 bg-linear-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                <span className="text-xs font-bold text-white">M</span>
+                <Image
+                  src="https://s3-smart-inventory-dashboard.s3.us-east-2.amazonaws.com/profile.png"
+                  alt="Profile"
+                  width={50}
+                  height={50}
+                  className="rounded-full h-full object-cover"
+                />
               </div>
               <span className="font-semibold text-gray-800 dark:text-gray-100">
                 Mounika
