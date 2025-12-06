@@ -28,20 +28,15 @@ async function main() {
   const dataDirectory = path.join(__dirname, "seedData");
 
   const orderedFileNames = [
-    // Child tables first (have foreign keys)
-    "sales.json", // Sales → Products
-    "purchases.json", // Purchases → Products
-    "expenseByCategory.json", // ExpenseByCategory → ExpenseSummary
-
-    // Independent tables (no foreign keys pointing to them)
-    "salesSummary.json",
-    "purchaseSummary.json",
-    "expenseSummary.json",
-    "expenses.json",
-
-    // Parent tables (referenced by child tables)
     "products.json",
+    "expenseSummary.json",
+    "sales.json",
+    "salesSummary.json",
+    "purchases.json",
+    "purchaseSummary.json",
     "users.json",
+    "expenses.json",
+    "expenseByCategory.json",
   ];
 
   await deleteAllData(orderedFileNames);
