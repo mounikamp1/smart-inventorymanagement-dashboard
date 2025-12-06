@@ -28,16 +28,18 @@ async function main() {
   const dataDirectory = path.join(__dirname, "seedData");
 
   const orderedFileNames = [
-    // Child/detail tables first
-    "sales.json",
-    "salesSummary.json",
-    "purchases.json",
-    "purchaseSummary.json",
-    "expenses.json",
-    "expenseSummary.json",
-    "expenseByCategory.json",
+    // Child tables first (have foreign keys)
+    "sales.json", // Sales → Products
+    "purchases.json", // Purchases → Products
+    "expenseByCategory.json", // ExpenseByCategory → ExpenseSummary
 
-    // Parent tables last
+    // Independent tables (no foreign keys pointing to them)
+    "salesSummary.json",
+    "purchaseSummary.json",
+    "expenseSummary.json",
+    "expenses.json",
+
+    // Parent tables (referenced by child tables)
     "products.json",
     "users.json",
   ];
