@@ -93,7 +93,7 @@ export const api = createApi({
     // Feature 1: Attach JWT token from NextAuth session on every request
     prepareHeaders: async (headers) => {
       const session = await getSession();
-      const token = (session?.user as any)?.accessToken;
+      const token = session?.user?.accessToken;
       if (token) headers.set("Authorization", `Bearer ${token}`);
       return headers;
     },

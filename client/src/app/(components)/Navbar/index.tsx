@@ -13,7 +13,7 @@ const Navbar = () => {
   const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
   // Feature 22: Role badge + session expiry
   const { data: session } = useSession();
-  const role = (session?.user as any)?.role as string | undefined;
+  const role = session?.user?.role;
   const isAdmin = role === "ADMIN";
   const [sessionWarning, setSessionWarning] = useState(false);
 

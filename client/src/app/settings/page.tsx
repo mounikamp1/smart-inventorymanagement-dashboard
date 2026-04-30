@@ -1,62 +1,43 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Header from "@/src/app/(components)/Header";
 import { Settings as SettingsIcon, Save, AlertCircle } from "lucide-react";
 import { useGetMeQuery, useUpdateMeMutation } from "@/src/state/api";
 
-const Settings = () => {
-  const { data: me, isLoading } = useGetMeQuery();
-  const [updateMe, { isLoading: isSaving, isError: isSaveError }] = useUpdateMeMutation();
+type MeData = { name?: string | null; email?: string | null };
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [notifications, setNotifications] = useState(true);
-  const [marketingEmails, setMarketingEmails] = useState(false);
+function SettingsForm({ me }: { me: MeData }) {
+  const [updateMe, { isLoading: isSaving, isError: isSaveError }] =
+    useUpdateMeMutation();
+  const [name, setName] = useState(me.name ?? "");
+  const [email, setEmail] = useState(me.email ?? "");
+  const [notifications, setNotifications] = useState(() => {
+    if (typeof window === "undefined") return true;
+    const n = localStorage.getItem("setting_notifications");
+    return n !== null ? n === "true" : true;
+  });
+  const [marketingEmails, setMarketingEmails] = useState(() => {
+    if (typeof window === "undefined") return false;
+    const m = localStorage.getItem("setting_marketing");
+    return m !== null ? m === "true" : false;
+  });
   const [savedNotification, setSavedNotification] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-
-  // Feature 20: Populate form from API on load
-  useEffect(() => {
-    if (me) {
-      setName(me.name ?? "");
-      setEmail(me.email ?? "");
-    }
-    // Load notification toggles from localStorage
-    const n = localStorage.getItem("setting_notifications");
-    const m = localStorage.getItem("setting_marketing");
-    if (n !== null) setNotifications(n === "true");
-    if (m !== null) setMarketingEmails(m === "true");
-  }, [me]);
 
   const handleSave = async () => {
     setErrorMsg("");
     try {
-      // Feature 20: Persist name/email via API
       await updateMe({ name, email }).unwrap();
-      // Persist toggles in localStorage
       localStorage.setItem("setting_notifications", String(notifications));
       localStorage.setItem("setting_marketing", String(marketingEmails));
       setSavedNotification(true);
       setTimeout(() => setSavedNotification(false), 3000);
-    } catch (err: any) {
-      setErrorMsg(err?.data?.message ?? "Failed to save settings.");
+    } catch (err: unknown) {
+      const e = err as { data?: { message?: string } };
+      setErrorMsg(e?.data?.message ?? "Failed to save settings.");
     }
   };
-
-  if (isLoading) {
-    return (
-      <div className="flex flex-col">
-        <Header name="User Settings" />
-        <div className="flex items-center justify-center h-64">
-          <div className="relative w-10 h-10">
-            <div className="absolute inset-0 border-4 border-gray-200 dark:border-gray-700 rounded-full"></div>
-            <div className="absolute inset-0 border-4 border-transparent border-t-blue-500 rounded-full animate-spin"></div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   const settingRows = [
     { label: "Name", value: name, type: "text" as const, onChange: setName },
@@ -146,6 +127,26 @@ const Settings = () => {
       </div>
     </div>
   );
+}
+
+const Settings = () => {
+  const { data: me, isLoading } = useGetMeQuery();
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col">
+        <Header name="User Settings" />
+        <div className="flex items-center justify-center h-64">
+          <div className="relative w-10 h-10">
+            <div className="absolute inset-0 border-4 border-gray-200 dark:border-gray-700 rounded-full"></div>
+            <div className="absolute inset-0 border-4 border-transparent border-t-blue-500 rounded-full animate-spin"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return <SettingsForm key={me?.email ?? ""} me={me ?? {}} />;
 };
 
 export default Settings;

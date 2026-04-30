@@ -14,7 +14,7 @@ const ACTION_COLORS: Record<string, string> = {
 
 const AuditLogPage = () => {
   const { data: session } = useSession();
-  const role = (session?.user as any)?.role;
+  const role = session?.user?.role;
   const [page, setPage] = useState(1);
   const [modelFilter, setModelFilter] = useState("");
 

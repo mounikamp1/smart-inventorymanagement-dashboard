@@ -1,18 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useAppSelector } from "./redux";
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!mounted) return;
-
     const root = document.documentElement;
     const body = document.body;
 
@@ -25,7 +18,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
       body.classList.remove("dark");
       document.documentElement.style.colorScheme = "light";
     }
-  }, [isDarkMode, mounted]);
+  }, [isDarkMode]);
 
   return <>{children}</>;
 };

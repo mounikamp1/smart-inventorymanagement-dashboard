@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import {
   Archive,
   CircleDollarSign,
@@ -43,7 +43,7 @@ const Sidebar = () => {
   const dispatch = useAppDispatch();
   const isSidebarCollapsed = useAppSelector((state) => state.global.isSidebarCollapsed);
   const { data: session } = useSession();
-  const role = (session?.user as any)?.role;
+  const role = session?.user?.role;
   const isAdmin = role === "ADMIN";
   const toggleSidebar = () => dispatch(setIsSidebarCollapsed(!isSidebarCollapsed));
   const sidebarClassNames = `fixed flex flex-col ${isSidebarCollapsed ? "w-0 md:w-20" : "w-72 md:w-64"} bg-white dark:bg-gray-900 transition-all duration-300 overflow-hidden h-full shadow-xl z-40 border-r border-gray-200 dark:border-gray-800`;

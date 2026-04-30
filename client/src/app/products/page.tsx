@@ -19,7 +19,7 @@ const Products = () => {
   const [isPending, startTransition] = useTransition();
   // Feature 18: Role-based UI
   const { data: session } = useSession();
-  const isAdmin = (session?.user as any)?.role === "ADMIN";
+  const isAdmin = session?.user?.role === "ADMIN";
 
   const { data: paginatedData, isLoading, isError } = useGetProductsQuery({
     search: searchTerm || undefined,

@@ -9,7 +9,7 @@ import { AlertCircle, Package, ChevronRight, ChevronLeft } from "lucide-react";
 
 const Inventory = () => {
   const { data: session } = useSession();
-  const isAdmin = (session?.user as any)?.role === "ADMIN";
+  const isAdmin = session?.user?.role === "ADMIN";
 
   const [cursor, setCursor] = useState<string | undefined>(undefined);
   const [cursorHistory, setCursorHistory] = useState<string[]>([]);

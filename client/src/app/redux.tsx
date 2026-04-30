@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useState } from "react";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import {
   TypedUseSelectorHook,
@@ -26,13 +26,13 @@ import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 /* REDUX PERSISTENCE */
 const createNoopStorage = () => {
   return {
-    getItem(_key: any) {
-      return Promise.resolve(null);
+    getItem(_key: string) {
+      return Promise.resolve<string | null>(null);
     },
-    setItem(_key: any, value: any) {
+    setItem(_key: string, value: string) {
       return Promise.resolve(value);
     },
-    removeItem(_key: any) {
+    removeItem(_key: string) {
       return Promise.resolve();
     },
   };
@@ -80,15 +80,14 @@ export default function StoreProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const storeRef = useRef<AppStore | null>(null);
-  if (!storeRef.current) {
-    storeRef.current = makeStore();
-    setupListeners(storeRef.current.dispatch);
-  }
-  const persistor = persistStore(storeRef.current);
+  const [{ store, persistor }] = useState(() => {
+    const s = makeStore();
+    setupListeners(s.dispatch);
+    return { store: s, persistor: persistStore(s) };
+  });
 
   return (
-    <Provider store={storeRef.current}>
+    <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         {children}
       </PersistGate>
