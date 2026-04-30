@@ -51,7 +51,7 @@ A production-grade, full-stack inventory management application built with **Nex
 
 > Replace the images below with actual screenshots of your running app.
 
-| Dashboard (Dark Mode) | Products Catalog | Audit Log |
+| Dashboard (Light Mode) | Products Catalog | Audit Log |
 |---|---|---|
 | ![Dashboard](docs/screenshots/dashboard.png) | ![Products](docs/screenshots/products.png) | ![Audit](docs/screenshots/audit.png) |
 
