@@ -1,7 +1,26 @@
+﻿# Dependencies
 client/node_modules/
 server/node_modules/
+
+# Build outputs
 client/dist/
 server/dist/
-client/.env
-server/.env
 client/.next/
+*.tsbuildinfo
+
+# Environment files — NEVER commit secrets
+client/.env
+client/.env.local
+client/.env*.local
+server/.env
+server/.env*.local
+
+# Logs
+server/logs/
+*.log
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/settings.json

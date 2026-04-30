@@ -54,9 +54,7 @@ const CardPopularProducts = () => {
                     {/* PRODUCT IMAGE */}
                     <div className="w-14 h-14 bg-linear-to-br from-blue-100 to-blue-50 dark:from-blue-900/30 dark:to-blue-800/20 rounded-xl flex items-center justify-center text-xl shrink-0 shadow-sm overflow-hidden relative">
                       <Image
-                        src={`https://s3-smart-inventory-dashboard.s3.us-east-2.amazonaws.com/product${
-                          Math.floor(Math.random() * 3) + 1
-                        }.png`}
+                        src={product.imageUrl || `https://s3-smart-inventory-dashboard.s3.us-east-2.amazonaws.com/product${(product.productId.charCodeAt(0) % 3) + 1}.png`}
                         alt={product.name}
                         width={56}
                         height={56}
@@ -120,3 +118,4 @@ const CardPopularProducts = () => {
 };
 
 export default CardPopularProducts;
+
